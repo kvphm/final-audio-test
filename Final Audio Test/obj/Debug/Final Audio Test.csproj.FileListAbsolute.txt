@@ -1,0 +1,46 @@
+C:\MS Visual 2015 Projects\Final Audio Test (Can NOT load AP project)\Final Audio Test\bin\Debug\Final Audio Test.exe.config
+C:\MS Visual 2015 Projects\Final Audio Test (Can NOT load AP project)\Final Audio Test\bin\Debug\Final Audio Test.exe
+C:\MS Visual 2015 Projects\Final Audio Test (Can NOT load AP project)\Final Audio Test\bin\Debug\Final Audio Test.pdb
+C:\MS Visual 2015 Projects\Final Audio Test (Can NOT load AP project)\Final Audio Test\bin\Debug\AudioPrecision.API.dll
+C:\MS Visual 2015 Projects\Final Audio Test (Can NOT load AP project)\Final Audio Test\bin\Debug\AudioPrecision.API.xml
+C:\MS Visual 2015 Projects\Final Audio Test (Can NOT load AP project)\Final Audio Test\obj\Debug\Final_Audio_Test.Form1.resources
+C:\MS Visual 2015 Projects\Final Audio Test (Can NOT load AP project)\Final Audio Test\obj\Debug\Final_Audio_Test.Properties.Resources.resources
+C:\MS Visual 2015 Projects\Final Audio Test (Can NOT load AP project)\Final Audio Test\obj\Debug\Final Audio Test.csproj.GenerateResource.Cache
+C:\MS Visual 2015 Projects\Final Audio Test (Can NOT load AP project)\Final Audio Test\obj\Debug\Final Audio Test.exe
+C:\MS Visual 2015 Projects\Final Audio Test (Can NOT load AP project)\Final Audio Test\obj\Debug\Final Audio Test.pdb
+C:\MS Visual 2015 Projects\Final Audio Test\Final Audio Test\bin\Debug\Final Audio Test.exe.config
+C:\MS Visual 2015 Projects\Final Audio Test\Final Audio Test\obj\Debug\Final Audio Test.exe
+C:\MS Visual 2015 Projects\Final Audio Test\Final Audio Test\obj\Debug\Final Audio Test.pdb
+C:\MS Visual 2015 Projects\Final Audio Test\Final Audio Test\bin\Debug\Final Audio Test.exe
+C:\MS Visual 2015 Projects\Final Audio Test\Final Audio Test\bin\Debug\Final Audio Test.pdb
+C:\MS Visual 2015 Projects\Final Audio Test\Final Audio Test\bin\Debug\AudioPrecision.API.dll
+C:\MS Visual 2015 Projects\Final Audio Test\Final Audio Test\bin\Debug\AudioPrecision.API.xml
+C:\MS Visual 2015 Projects\Final Audio Test\Final Audio Test\obj\Debug\Final_Audio_Test.Form1.resources
+C:\MS Visual 2015 Projects\Final Audio Test\Final Audio Test\obj\Debug\Final_Audio_Test.Properties.Resources.resources
+C:\MS Visual 2015 Projects\Final Audio Test\Final Audio Test\obj\Debug\Final Audio Test.csproj.GenerateResource.Cache
+C:\MS Visual 2015 Projects\Final Audio Test\Final Audio Test\obj\Debug\Final Audio Test.csprojResolveAssemblyReference.cache
+C:\Users\Steve Pham\Genasys Production Test Programs\final_audio\Final Audio Test\Final Audio Test\bin\Debug\Final Audio Test.exe.config
+C:\Users\Steve Pham\Genasys Production Test Programs\final_audio\Final Audio Test\Final Audio Test\obj\Debug\Final Audio Test.exe
+C:\Users\Steve Pham\Genasys Production Test Programs\final_audio\Final Audio Test\Final Audio Test\obj\Debug\Final Audio Test.pdb
+C:\Users\Steve Pham\Genasys Production Test Programs\final_audio\Final Audio Test\Final Audio Test\bin\Debug\Final Audio Test.exe
+C:\Users\Steve Pham\Genasys Production Test Programs\final_audio\Final Audio Test\Final Audio Test\bin\Debug\Final Audio Test.pdb
+C:\Users\Steve Pham\Genasys Production Test Programs\final_audio\Final Audio Test\Final Audio Test\bin\Debug\AudioPrecision.API.dll
+C:\Users\Steve Pham\Genasys Production Test Programs\final_audio\Final Audio Test\Final Audio Test\bin\Debug\AudioPrecision.API.xml
+C:\Users\Steve Pham\Genasys Production Test Programs\final_audio\Final Audio Test\Final Audio Test\obj\Debug\Final Audio Test.csprojResolveAssemblyReference.cache
+C:\Users\Steve Pham\Genasys Production Test Programs\final_audio\Final Audio Test\Final Audio Test\obj\Debug\Final_Audio_Test.Form1.resources
+C:\Users\Steve Pham\Genasys Production Test Programs\final_audio\Final Audio Test\Final Audio Test\obj\Debug\Final_Audio_Test.Properties.Resources.resources
+C:\Users\Steve Pham\Genasys Production Test Programs\final_audio\Final Audio Test\Final Audio Test\obj\Debug\Final Audio Test.csproj.GenerateResource.Cache
+C:\Final Audio Test Mod\Final Audio Test\bin\Debug\Final Audio Test.exe.config
+C:\Final Audio Test Mod\Final Audio Test\bin\Debug\Final Audio Test.exe
+C:\Final Audio Test Mod\Final Audio Test\bin\Debug\Final Audio Test.pdb
+C:\Final Audio Test Mod\Final Audio Test\bin\Debug\AudioPrecision.API.dll
+C:\Final Audio Test Mod\Final Audio Test\bin\Debug\AudioPrecision.API.xml
+C:\Final Audio Test Mod\Final Audio Test\obj\Debug\Final Audio Test.csproj.AssemblyReference.cache
+C:\Final Audio Test Mod\Final Audio Test\obj\Debug\Final Audio Test.csproj.SuggestedBindingRedirects.cache
+C:\Final Audio Test Mod\Final Audio Test\obj\Debug\Final_Audio_Test.Form1.resources
+C:\Final Audio Test Mod\Final Audio Test\obj\Debug\Final_Audio_Test.Properties.Resources.resources
+C:\Final Audio Test Mod\Final Audio Test\obj\Debug\Final Audio Test.csproj.GenerateResource.cache
+C:\Final Audio Test Mod\Final Audio Test\obj\Debug\Final Audio Test.csproj.CoreCompileInputs.cache
+C:\Final Audio Test Mod\Final Audio Test\obj\Debug\Final Audio Test.csproj.CopyComplete
+C:\Final Audio Test Mod\Final Audio Test\obj\Debug\Final Audio Test.exe
+C:\Final Audio Test Mod\Final Audio Test\obj\Debug\Final Audio Test.pdb

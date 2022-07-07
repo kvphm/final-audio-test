@@ -1,0 +1,14 @@
+C:\MS Visual 2015 Projects\Final Audio Test\Final Audio Test\bin\Release\Final Audio Test.exe.config
+C:\MS Visual 2015 Projects\Final Audio Test\Final Audio Test\bin\Release\Final Audio Test.exe
+C:\MS Visual 2015 Projects\Final Audio Test\Final Audio Test\bin\Release\Final Audio Test.pdb
+C:\MS Visual 2015 Projects\Final Audio Test\Final Audio Test\bin\Release\AudioPrecision.API.dll
+C:\MS Visual 2015 Projects\Final Audio Test\Final Audio Test\bin\Release\AudioPrecision.API.xml
+C:\MS Visual 2015 Projects\Final Audio Test\Final Audio Test\obj\Release\Final_Audio_Test.Form1.resources
+C:\MS Visual 2015 Projects\Final Audio Test\Final Audio Test\obj\Release\Final_Audio_Test.Properties.Resources.resources
+C:\MS Visual 2015 Projects\Final Audio Test\Final Audio Test\obj\Release\Final Audio Test.csproj.GenerateResource.Cache
+C:\MS Visual 2015 Projects\Final Audio Test\Final Audio Test\obj\Release\Final Audio Test.exe
+C:\MS Visual 2015 Projects\Final Audio Test\Final Audio Test\obj\Release\Final Audio Test.pdb
+C:\MS Visual 2015 Projects\Final Audio Test\Final Audio Test\obj\Release\Final Audio Test.csprojResolveAssemblyReference.cache
+C:\MS Visual 2015 Projects\Final Audio Test (Can NOT load AP project)\Final Audio Test\bin\Release\Final Audio Test.exe.config
+C:\MS Visual 2015 Projects\Final Audio Test (Can NOT load AP project)\Final Audio Test\obj\Release\Final Audio Test.exe
+C:\MS Visual 2015 Projects\Final Audio Test (Can NOT load AP project)\Final Audio Test\obj\Release\Final Audio Test.pdb
