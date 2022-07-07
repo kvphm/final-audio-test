@@ -5781,50 +5781,42 @@ namespace Final_Audio_Test
         }
 
         /*** Kevin codes start here ***/
-        class IProduct
-        {
-            string operIni;
-            string woNo;
-            
-            string date;
-            string time;
+        public struct Field {
+            string header; // Header in the program.
+            string value; // The value of the field.
+            int index; // Index in CSV file.
 
-            string systemSn;
+            public Field(string header, string value, int index)
+            {
+                this.header = header;
+                this.value = value;
+                this.index = index;
+            }
         }
 
-        class I100X : IProduct
+        public class IProduct
         {
+            public Field operIni;
+            public Field woNo;
+            public Field date;
+            public Field time;
+            public Field systemSn;
 
-        }
-
-        class I300X : IProduct
-        {
-
-        }
-        
-        class I400XL : IProduct
-        {
-
-        }
-        
-        class I500X : IProduct
-        {
-
-        }
-
-        class I1000V : IProduct
-        {
-
+            public Field OperIni
+            {
+                get { return OperIni; }
+                set { OperIni = value; }
+            }
         }
 
 
 
         private void button12_Click(object sender, EventArgs e)
         {
-            // Folder.networkDrive + DUT.productModel + " Test Log (Post-Test).csv" 
-            
+                // Folder.networkDrive + DUT.productModel + " Test Log (Post-Test).csv" 
 
-
+            IProduct test = new IProduct();
+            test.OperIni = 3
         }
 
     }
