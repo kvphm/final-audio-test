@@ -328,7 +328,6 @@ namespace Final_Audio_Test
         private const int COL_MP31_SENSITIVITY = 17;
         private const int COL_OUTPUT_NOISE     = 18;
         private const int COL_IPOD_INPUT       = 19;
-        private const int COL_MAX_SPL_DB       = 20;
 
         private const int COL_REMARKS          = 24;
 
@@ -362,7 +361,7 @@ namespace Final_Audio_Test
             subTests.Add(new Field(INDEX_AUDIO_EFFECT_WITH_PWR_SW_OFF_VB_OFF, data[COL_PWR_OFF_VB_OFF]));
             subTests.Add(new Field(INDEX_MP3_INPUT1_SENSITIVITY, data[COL_MP31_SENSITIVITY]));
             subTests.Add(new Field(INDEX_SYSTEM_BACKGROUND_NOISE_OUTPUT, data[COL_OUTPUT_NOISE]));
-            subTests.Add(new Field(INDEX_IPOD_INPUT_SENSITIVITY_MAX_SPL, Field.TwoPFEval(data[COL_IPOD_INPUT], data[COL_MAX_SPL_DB])));
+            subTests.Add(new Field(INDEX_IPOD_INPUT_SENSITIVITY_MAX_SPL, data[COL_IPOD_INPUT]));
         }
     }
 
@@ -1094,22 +1093,253 @@ namespace Final_Audio_Test
 
     class Model1000Xi : Model
     {
-        private const int COL_CONTROL_UNIT_SN = 7;
-        private const int COL_ELEC_SN = 8;
-        private const int COL_MIC_SN = 9;
+        private const int COL_CONTROL_UNIT_SN    = 7;
+        private const int COL_ELEC_SN            = 8;
+        private const int COL_MIC_SN             = 9;
         private const int COL_CARBON_FIBER_HD_SN = 10;
        
-        private const int COL_DRIVER1_SN = 11;
-        private const int COL_DRIVER2_SN = 12;
-        private const int COL_DRIVER3_SN = 13;
-        private const int COL_DRIVER4_SN = 14;
-        private const int COL_DRIVER5_SN = 15;
-        private const int COL_DRIVER6_SN = 16;
-        private const int COL_DRIVER7_SN = 17;
+        private const int COL_DRIVER1_SN         = 11;
+        private const int COL_DRIVER2_SN         = 12;
+        private const int COL_DRIVER3_SN         = 13;
+        private const int COL_DRIVER4_SN         = 14;
+        private const int COL_DRIVER5_SN         = 15;
+        private const int COL_DRIVER6_SN         = 16;
+        private const int COL_DRIVER7_SN         = 17;
 
+        private const int COL_MP3_SENSITIVITY    = 18;
+        private const int COL_MAX_SPL            = 19;
+        private const int COL_VOL_FUNCTION       = 20;
+        private const int COL_MIC_SENSITIVITY    = 21;
+        private const int COL_WIDE_ON            = 22;
+        private const int COL_NARROW_OFF         = 23;
+        private const int COL_NARROW_ON          = 24;
+        private const int COL_OUTPUT_NOISE       = 25;
 
+        private const int COL_REMARKS            = 29;
+
+        private const int INDEX_CONTROL_UNIT                       = 1;
+        private const int INDEX_ELECTRONICS                        = 2;
+        private const int INDEX_MICROPHONE                         = 3;
+        private const int INDEX_CARBONFIBER_HD                     = 4;
+
+        private const int INDEX_MP3_INPUT_SENSITIVITY_MAX_SPL      = 0;
+        private const int INDEX_VOLUME_CONTROL_KNOB_FUNCTION       = 1;
+        private const int INDEX_MICROPHONE_INPUT_SENSITIVITY       = 2;
+        private const int INDEX_AUDIO_EFFECT_W_SOUND_WIDE_VB_ON    = 3;
+        private const int INDEX_AUDIO_EFFECT_W_SOUND_NARROW_VB_OFF = 4;
+        private const int INDEX_AUDIO_EFFECT_W_SOUND_NARROW_VB_ON  = 5;
+        private const int INDEX_SYSTEM_BACKGROUND_NOISE_OUTPUT     = 6;
 
         Model1000Xi(string[] data) : base(data)
+        {
+            general.Add(new Field(INDEX_REMARKS, data[COL_REMARKS]));
+
+            serialNo.Add(new Field(INDEX_CONTROL_UNIT, data[COL_CONTROL_UNIT_SN]));
+            serialNo.Add(new Field(INDEX_ELECTRONICS, data[COL_ELEC_SN]));
+            serialNo.Add(new Field(INDEX_MICROPHONE, data[COL_MIC_SN]));
+            serialNo.Add(new Field(INDEX_CARBONFIBER_HD, data[COL_CARBON_FIBER_HD_SN]));
+
+            driverSns.Add(new Field(INDEX_DRIVER_SN_1, data[COL_DRIVER1_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_2, data[COL_DRIVER2_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_3, data[COL_DRIVER3_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_4, data[COL_DRIVER4_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_5, data[COL_DRIVER5_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_6, data[COL_DRIVER6_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_7, data[COL_DRIVER7_SN]));
+
+            subTests.Add(new Field(INDEX_MP3_INPUT_SENSITIVITY_MAX_SPL, Field.TwoPFEval(data[COL_MP3_SENSITIVITY], data[COL_MAX_SPL])));
+            subTests.Add(new Field(INDEX_VOLUME_CONTROL_KNOB_FUNCTION, data[COL_VOL_FUNCTION]));
+            subTests.Add(new Field(INDEX_MICROPHONE_INPUT_SENSITIVITY, data[COL_MIC_SENSITIVITY]));
+            subTests.Add(new Field(INDEX_AUDIO_EFFECT_W_SOUND_WIDE_VB_ON, data[COL_WIDE_ON]));
+            subTests.Add(new Field(INDEX_AUDIO_EFFECT_W_SOUND_NARROW_VB_OFF, data[COL_NARROW_OFF]));
+            subTests.Add(new Field(INDEX_AUDIO_EFFECT_W_SOUND_NARROW_VB_ON, data[COL_NARROW_ON]));
+            subTests.Add(new Field(INDEX_SYSTEM_BACKGROUND_NOISE_OUTPUT, data[COL_OUTPUT_NOISE]));
+        }
+    }
+
+    class Model1000Xvb20AudioCable : Model
+    {
+        private const int COL_MP3_PLAYER_SN        = 7;
+        private const int COL_ELEC_SN              = 8;
+        private const int COL_MIC_SN               = 9;
+
+        private const int COL_DRIVER1_SN           = 10;
+        private const int COL_DRIVER2_SN           = 11;
+        private const int COL_DRIVER3_SN           = 12;
+        private const int COL_DRIVER4_SN           = 13;
+        private const int COL_DRIVER5_SN           = 14;
+        private const int COL_DRIVER6_SN           = 15;
+        private const int COL_DRIVER7_SN           = 16;
+
+        private const int COL_MP3_SENSITIVITY      = 17;
+        private const int COL_MAX_SPL              = 18;
+        private const int COL_VOL_FUNCTION         = 19;
+        private const int COL_MIC_SENSITIVITY      = 20;
+        private const int COL_OUTPUT_SW_MAX_VB_ON  = 21;
+        private const int COL_OUTPUT_SW_LOW_VB_OFF = 22;
+        private const int COL_OUTPUT_NOISE         = 23;
+
+        private const int COL_REMARKS              = 27;
+
+        private const int INDEX_MP3_PLAYER                                          = 1;
+        private const int INDEX_AMP_PACK                                            = 2;
+        private const int INDEX_MICROPHONE                                          = 3;
+
+        private const int INDEX_MP3_INPUT_SENSITIVITY_MAX_SPL                       = 0;
+        private const int INDEX_VOLUME_CONTROL_KNOB_FUNCTION                        = 1;
+        private const int INDEX_MICROPHONE_INPUT_SENSITIVITY                        = 2;
+        private const int INDEX_OUTPUT_SENSITIVITY_W_AUDIO_OUTPUT_SWITCH_MAX_VB_ON  = 3;
+        private const int INDEX_OUTPUT_SENSITIVITY_W_AUDIO_OUTPUT_SWITCH_LOW_VB_OFF = 4;
+        private const int INDEX_SYSTEM_BACKGROUND_NOISE_OUTPUT                      = 6;
+
+        Model1000Xvb20AudioCable(string[] data) : base(data)
+        {
+            general.Add(new Field(INDEX_REMARKS, data[COL_REMARKS]));
+
+            serialNo.Add(new Field(INDEX_MP3_PLAYER, data[COL_MP3_PLAYER_SN]));
+            serialNo.Add(new Field(INDEX_AMP_PACK, data[COL_ELEC_SN]));
+            serialNo.Add(new Field(INDEX_MICROPHONE, data[COL_MIC_SN]));
+
+            driverSns.Add(new Field(INDEX_DRIVER_SN_1, data[COL_DRIVER1_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_2, data[COL_DRIVER2_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_3, data[COL_DRIVER3_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_4, data[COL_DRIVER4_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_5, data[COL_DRIVER5_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_6, data[COL_DRIVER6_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_7, data[COL_DRIVER7_SN]));
+
+            subTests.Add(new Field(INDEX_MP3_INPUT_SENSITIVITY_MAX_SPL, Field.TwoPFEval(data[COL_MP3_SENSITIVITY], data[COL_MAX_SPL])));
+            subTests.Add(new Field(INDEX_VOLUME_CONTROL_KNOB_FUNCTION, data[COL_VOL_FUNCTION]));
+            subTests.Add(new Field(INDEX_MICROPHONE_INPUT_SENSITIVITY, data[COL_MIC_SENSITIVITY]));
+            subTests.Add(new Field(INDEX_OUTPUT_SENSITIVITY_W_AUDIO_OUTPUT_SWITCH_MAX_VB_ON, data[COL_OUTPUT_SW_MAX_VB_ON]));
+            subTests.Add(new Field(INDEX_OUTPUT_SENSITIVITY_W_AUDIO_OUTPUT_SWITCH_LOW_VB_OFF, data[COL_OUTPUT_SW_LOW_VB_OFF]));
+            subTests.Add(new Field(INDEX_SYSTEM_BACKGROUND_NOISE_OUTPUT, data[COL_OUTPUT_NOISE]));
+        }
+    }
+
+    class Model1000Xvb30AudioCable : Model
+    {
+        private const int COL_MP3_PLAYER_SN        = 7;
+        private const int COL_ELEC_SN              = 8;
+        private const int COL_MIC_SN               = 9;
+
+        private const int COL_DRIVER1_SN           = 10;
+        private const int COL_DRIVER2_SN           = 11;
+        private const int COL_DRIVER3_SN           = 12;
+        private const int COL_DRIVER4_SN           = 13;
+        private const int COL_DRIVER5_SN           = 14;
+        private const int COL_DRIVER6_SN           = 15;
+        private const int COL_DRIVER7_SN           = 16;
+
+        private const int COL_MP3_SENSITIVITY      = 17;
+        private const int COL_MAX_SPL              = 18;
+        private const int COL_VOL_FUNCTION         = 19;
+        private const int COL_MIC_SENSITIVITY      = 20;
+        private const int COL_OUTPUT_SW_MAX_VB_ON  = 21;
+        private const int COL_OUTPUT_SW_LOW_VB_OFF = 22;
+        private const int COL_OUTPUT_NOISE         = 23;
+
+        private const int COL_REMARKS              = 27;
+
+        private const int INDEX_MP3_PLAYER                                          = 1;
+        private const int INDEX_AMP_PACK                                            = 2;
+        private const int INDEX_MICROPHONE                                          = 3;
+
+        private const int INDEX_MP3_INPUT_SENSITIVITY_MAX_SPL                       = 0;
+        private const int INDEX_VOLUME_CONTROL_KNOB_FUNCTION                        = 1;
+        private const int INDEX_MICROPHONE_INPUT_SENSITIVITY                        = 2;
+        private const int INDEX_OUTPUT_SENSITIVITY_W_AUDIO_OUTPUT_SWITCH_MAX_VB_ON  = 3;
+        private const int INDEX_OUTPUT_SENSITIVITY_W_AUDIO_OUTPUT_SWITCH_LOW_VB_OFF = 4;
+        private const int INDEX_SYSTEM_BACKGROUND_NOISE_OUTPUT                      = 6;
+
+        Model1000Xvb30AudioCable(string[] data) : base(data)
+        {
+            general.Add(new Field(INDEX_REMARKS, data[COL_REMARKS]));
+
+            serialNo.Add(new Field(INDEX_MP3_PLAYER, data[COL_MP3_PLAYER_SN]));
+            serialNo.Add(new Field(INDEX_AMP_PACK, data[COL_ELEC_SN]));
+            serialNo.Add(new Field(INDEX_MICROPHONE, data[COL_MIC_SN]));
+
+            driverSns.Add(new Field(INDEX_DRIVER_SN_1, data[COL_DRIVER1_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_2, data[COL_DRIVER2_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_3, data[COL_DRIVER3_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_4, data[COL_DRIVER4_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_5, data[COL_DRIVER5_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_6, data[COL_DRIVER6_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_7, data[COL_DRIVER7_SN]));
+
+            subTests.Add(new Field(INDEX_MP3_INPUT_SENSITIVITY_MAX_SPL, Field.TwoPFEval(data[COL_MP3_SENSITIVITY], data[COL_MAX_SPL])));
+            subTests.Add(new Field(INDEX_VOLUME_CONTROL_KNOB_FUNCTION, data[COL_VOL_FUNCTION]));
+            subTests.Add(new Field(INDEX_MICROPHONE_INPUT_SENSITIVITY, data[COL_MIC_SENSITIVITY]));
+            subTests.Add(new Field(INDEX_OUTPUT_SENSITIVITY_W_AUDIO_OUTPUT_SWITCH_MAX_VB_ON, data[COL_OUTPUT_SW_MAX_VB_ON]));
+            subTests.Add(new Field(INDEX_OUTPUT_SENSITIVITY_W_AUDIO_OUTPUT_SWITCH_LOW_VB_OFF, data[COL_OUTPUT_SW_LOW_VB_OFF]));
+            subTests.Add(new Field(INDEX_SYSTEM_BACKGROUND_NOISE_OUTPUT, data[COL_OUTPUT_NOISE]));
+        }
+    }
+
+    class Model1000Xvb100AudioCable : Model
+    {
+        private const int COL_MP3_PLAYER_SN        = 7;
+        private const int COL_ELEC_SN              = 8;
+        private const int COL_MIC_SN               = 9;
+
+        private const int COL_DRIVER1_SN           = 10;
+        private const int COL_DRIVER2_SN           = 11;
+        private const int COL_DRIVER3_SN           = 12;
+        private const int COL_DRIVER4_SN           = 13;
+        private const int COL_DRIVER5_SN           = 14;
+        private const int COL_DRIVER6_SN           = 15;
+        private const int COL_DRIVER7_SN           = 16;
+
+        private const int COL_MP3_SENSITIVITY      = 17;
+        private const int COL_MAX_SPL              = 18;
+        private const int COL_VOL_FUNCTION         = 19;
+        private const int COL_MIC_SENSITIVITY      = 20;
+        private const int COL_OUTPUT_SW_MAX_VB_ON  = 21;
+        private const int COL_OUTPUT_SW_LOW_VB_OFF = 22;
+        private const int COL_OUTPUT_NOISE         = 23;
+
+        private const int COL_REMARKS              = 27;
+
+        private const int INDEX_MP3_PLAYER                                          = 1;
+        private const int INDEX_AMP_PACK                                            = 2;
+        private const int INDEX_MICROPHONE                                          = 3;
+
+        private const int INDEX_MP3_INPUT_SENSITIVITY_MAX_SPL                       = 0;
+        private const int INDEX_VOLUME_CONTROL_KNOB_FUNCTION                        = 1;
+        private const int INDEX_MICROPHONE_INPUT_SENSITIVITY                        = 2;
+        private const int INDEX_OUTPUT_SENSITIVITY_W_AUDIO_OUTPUT_SWITCH_MAX_VB_ON  = 3;
+        private const int INDEX_OUTPUT_SENSITIVITY_W_AUDIO_OUTPUT_SWITCH_LOW_VB_OFF = 4;
+        private const int INDEX_SYSTEM_BACKGROUND_NOISE_OUTPUT                      = 6;
+
+        Model1000Xvb100AudioCable(string[] data) : base(data)
+        {
+            general.Add(new Field(INDEX_REMARKS, data[COL_REMARKS]));
+
+            serialNo.Add(new Field(INDEX_MP3_PLAYER, data[COL_MP3_PLAYER_SN]));
+            serialNo.Add(new Field(INDEX_AMP_PACK, data[COL_ELEC_SN]));
+            serialNo.Add(new Field(INDEX_MICROPHONE, data[COL_MIC_SN]));
+
+            driverSns.Add(new Field(INDEX_DRIVER_SN_1, data[COL_DRIVER1_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_2, data[COL_DRIVER2_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_3, data[COL_DRIVER3_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_4, data[COL_DRIVER4_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_5, data[COL_DRIVER5_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_6, data[COL_DRIVER6_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_7, data[COL_DRIVER7_SN]));
+
+            subTests.Add(new Field(INDEX_MP3_INPUT_SENSITIVITY_MAX_SPL, Field.TwoPFEval(data[COL_MP3_SENSITIVITY], data[COL_MAX_SPL])));
+            subTests.Add(new Field(INDEX_VOLUME_CONTROL_KNOB_FUNCTION, data[COL_VOL_FUNCTION]));
+            subTests.Add(new Field(INDEX_MICROPHONE_INPUT_SENSITIVITY, data[COL_MIC_SENSITIVITY]));
+            subTests.Add(new Field(INDEX_OUTPUT_SENSITIVITY_W_AUDIO_OUTPUT_SWITCH_MAX_VB_ON, data[COL_OUTPUT_SW_MAX_VB_ON]));
+            subTests.Add(new Field(INDEX_OUTPUT_SENSITIVITY_W_AUDIO_OUTPUT_SWITCH_LOW_VB_OFF, data[COL_OUTPUT_SW_LOW_VB_OFF]));
+            subTests.Add(new Field(INDEX_SYSTEM_BACKGROUND_NOISE_OUTPUT, data[COL_OUTPUT_NOISE]));
+        }
+    }
+
+    class Model1950Xl35AudioCable : Model
+    {
+        Model1950Xl35AudioCable(string[] data) : base(data)
         {
 
         }
