@@ -268,8 +268,9 @@ namespace Final_Audio_Test
             }
 
             //     if (!APx.FftSpectrumSignalMonitor.IsDocked) APx.FftSpectrumSignalMonitor.Dock();
-            if (!APx.ScopeSignalMonitor.IsDocked) APx.ScopeSignalMonitor.Dock();
-            if (APx.SignalMeters.IsDocked) APx.SignalMeters.Undock();
+            // TEMP DEBUG
+            // if (!APx.ScopeSignalMonitor.IsDocked) APx.ScopeSignalMonitor.Dock();
+            // if (APx.SignalMeters.IsDocked) APx.SignalMeters.Undock();
         }
 
         protected override void OnShown(EventArgs e)
@@ -8041,38 +8042,11 @@ namespace Final_Audio_Test
         }
 
         /*** Kevin codes start here ***/
-        public struct Field
-        {
-            string header; // Header in the program.
-            string value; // The value of the field.
-            int index; // Index in CSV file.
-
-            public Field(string header, string value, int index)
-            {
-                this.header = header;
-                this.value = value;
-                this.index = index;
-            }
-        }
-
-        public class IProduct
-        {
-            public Field operIni;
-            public Field woNo;
-            public Field date;
-            public Field time;
-            public Field systemSn;
-
-            IProduct()
-            {
-
-            }
-        }
 
         private void button12_Click(object sender, EventArgs e)
         {
             // Folder.networkDrive + DUT.productModel + " Test Log (Post-Test).csv" 
-
+            Console.WriteLine(DUT.productModel);
         }
 
     }

@@ -44,3 +44,16 @@ C:\Final Audio Test Mod\Final Audio Test\obj\Debug\Final Audio Test.csproj.CoreC
 C:\Final Audio Test Mod\Final Audio Test\obj\Debug\Final Audio Test.csproj.CopyComplete
 C:\Final Audio Test Mod\Final Audio Test\obj\Debug\Final Audio Test.exe
 C:\Final Audio Test Mod\Final Audio Test\obj\Debug\Final Audio Test.pdb
+C:\Users\KEVIN PHAM\Documents\GitHub\final-audio-test\Final Audio Test\obj\Debug\Final Audio Test.exe
+C:\Users\KEVIN PHAM\Documents\GitHub\final-audio-test\Final Audio Test\obj\Debug\Final Audio Test.pdb
+C:\Users\KEVIN PHAM\Documents\GitHub\final-audio-test\Final Audio Test\obj\Debug\Final Audio Test.csproj.AssemblyReference.cache
+C:\Users\KEVIN PHAM\Documents\GitHub\final-audio-test\Final Audio Test\obj\Debug\Final Audio Test.csproj.SuggestedBindingRedirects.cache
+C:\Users\KEVIN PHAM\Documents\GitHub\final-audio-test\Final Audio Test\obj\Debug\Final_Audio_Test.Form1.resources
+C:\Users\KEVIN PHAM\Documents\GitHub\final-audio-test\Final Audio Test\obj\Debug\Final_Audio_Test.Properties.Resources.resources
+C:\Users\KEVIN PHAM\Documents\GitHub\final-audio-test\Final Audio Test\obj\Debug\Final Audio Test.csproj.GenerateResource.cache
+C:\Users\KEVIN PHAM\Documents\GitHub\final-audio-test\Final Audio Test\obj\Debug\Final Audio Test.csproj.CoreCompileInputs.cache
+C:\Users\KEVIN PHAM\Documents\GitHub\final-audio-test\Final Audio Test\bin\Debug\Final Audio Test.exe.config
+C:\Users\KEVIN PHAM\Documents\GitHub\final-audio-test\Final Audio Test\bin\Debug\Final Audio Test.exe
+C:\Users\KEVIN PHAM\Documents\GitHub\final-audio-test\Final Audio Test\bin\Debug\Final Audio Test.pdb
+C:\Users\KEVIN PHAM\Documents\GitHub\final-audio-test\Final Audio Test\bin\Debug\AudioPrecision.API.xml
+C:\Users\KEVIN PHAM\Documents\GitHub\final-audio-test\Final Audio Test\obj\Debug\Final Audio Test.csproj.CopyComplete
