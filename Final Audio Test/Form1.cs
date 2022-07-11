@@ -8041,13 +8041,258 @@ namespace Final_Audio_Test
             }
         }
 
-        /*** Kevin codes start here ***/
+        /*** Kevin's code starts here ***/
+        private string GetPathFromProductModelStr()
+        {
+            const string PREFIX = "Z:\\Kevin Pham\\"; // Folder.networkDrive
+            const string SUFFIX = " Test Log (Post-Test).csv";
+            string infix;
+            switch (DUT.productModel)
+            {
+                case "450XL Extended Test":
+                    infix = "450XL";
+                    break;
+                case "1000X-20FT":
+                case "1000X-30FT":
+                case "1000X-100FT":
+                    infix = "1000X";
+                    break;
+                case "1000XVB-20FT":
+                case "1000XVB-30FT":
+                case "1000XVB-100FT":
+                    infix = "1000XVB";
+                    break;
+                case "1950XL-35FT":
+                case "1950XL-66FT":
+                case "1950XL-100FT":
+                    infix = "1950XL";
+                    break;
+                case "360XL Manifold":
+                    infix = "360X Manifold";
+                    break;
+                case "DS60-X w AmpPack":
+                case "DS60-XL w AmpPack":
+                    infix = "60-DEG w AmpPack";
+                    break;
+                case "DS60-70V-60W":
+                case "DS60-100V-60W":
+                case "DS60-25V-80W":
+                case "DS60-70V-80W":
+                case "DS60-100V-80W":
+                case "DS60-70V-160W":
+                case "DS60-100V-160W":
+                    infix = "60-DEG";
+                    break;
+                case "DS60-X":
+                case "DS60-XL":
+                    infix = "60-DEG wo Amp";
+                    break;
+                case "500RX":
+                case "950RXL":
+                case "1000RX":
+                case "950NXT":
+                    infix = "LRAD-RX";
+                    break;
+                case "360Xm 1-ST 25V-60W":
+                case "360Xm 1-ST 100V-60W":
+                case "360Xm 2-ST 25V-60W":
+                case "360Xm 2-ST 100V-120W":
+                case "360Xm 2-ST 70V-60W":
+                case "360Xm 4-ST 100V-240W":
+                case "360Xm 1-ST wo Trans":
+                case "360Xm 2-ST wo Trans":
+                    infix = "360Xm";
+                    break;
+                case "360XL-MID 1-ST":
+                case "360XL-MID 2-ST":
+                    infix = "360XL-MID";
+                    break;
+                default:
+                    infix = DUT.productModel;
+                    break;
+            }
+            return PREFIX + infix + SUFFIX;
+        }
+
+        private List<List<string>> GetAllUnitSnTests(string path, string unitSn)
+        {
+            List<List<string>> allTestsFromSn = new List<List<string>>();
+            using (StreamReader reader = new StreamReader(path))
+            {
+                string headerLine = reader.ReadLine();
+                string line;
+                while (!reader.EndOfStream)
+                {
+                    line = reader.ReadLine();
+                    var values = line.Split(';');
+                    List<String> row = values[0].Split(',').ToList();
+                    if (row[0].Trim() == unitSn)
+                    {
+                        int headerRowSize = File.ReadLines(path).First().Split(',').Length;
+                        int selectedRowSize = row.Count;
+                        int elementsNeeded = headerRowSize - selectedRowSize;
+                        if (elementsNeeded > 0)
+                        {
+                            for (int i = 0; i < elementsNeeded; i++)
+                            {
+                                row.Add("");
+                            }
+                        }
+                        allTestsFromSn.Add(new List<string>(row));
+                    }
+                }
+            }
+            return allTestsFromSn;
+        }
+
+        Model GetModelFromProductModelStr(List<string> latestTest)
+        {
+            Model model;
+            switch (DUT.productModel)
+            {
+                case "100X":
+                    model = new Model100X(latestTest);
+                    break;
+                case "100X-NAVY-V1":
+                    model = new Model100XNavyV01(latestTest);
+                    break;
+                case "100X-NAVY":
+                    model = new Model100XNavy(latestTest);
+                    break;
+                case "300Xi":      
+                case "300XRA":
+                case "300XRA-260W":
+                    model = new Model300X(latestTest);
+                    break;
+                case "450XL":
+                case "450XL Extended Test":
+                case "450XL-RA":
+                    model = new Model450Xl(latestTest);
+                    break;
+                case "500X":
+                    model = new Model500X(latestTest);
+                    break;
+                case "500X-RE":
+                    model = new Model500Xre(latestTest);
+                    break;
+                case "1000":
+                    model = new Model1000V(latestTest);
+                    break;
+                case "1000X-20FT":
+                case "1000X-30FT":
+                case "1000X-100FT":
+                    model = new Model1000X(latestTest);
+                    break;
+                case "1000X2U":
+                    model = new Model1000X2U(latestTest);
+                    break;
+                case "1000Xi":
+                    model = new Model1000Xi(latestTest);
+                    break;
+                case "1000XVB-20FT":
+                case "1000XVB-30FT":
+                case "1000XVB-100FT":
+                    model = new Model1000Xvb(latestTest);
+                    break;
+                case "1950XL-35FT":
+                case "1950XL-66FT":
+                case "1950XL-100FT":
+                    model = new Model1950Xl(latestTest);
+                    break;
+                case "360X Manifold":
+                case "360XL Manifold":
+                    model = new Model360XManifolds(latestTest);
+                    break;
+                case "DS60-X w AmpPack":
+                case "DS60-XL w AmpPack":
+                    model = new ModelDs60WAmpPack(latestTest);
+                    break;
+                case "DS60-70V-60W":
+                case "DS60-100V-60W":
+                case "DS60-25V-80W":
+                case "DS60-70V-80W":
+                case "DS60-100V-80W":
+                case "DS60-70V-160W":
+                case "DS60-100V-160W":
+                    model = new ModelDs60X(latestTest);
+                    break;
+                case "DS60-X":
+                case "DS60-XL":
+                    model = new ModelDs60HornsOnly(latestTest);
+                    break;
+                case "SS100":
+                    model = new ModelSS100(latestTest);
+                    break;
+                case "SS300":
+                    model = new ModelSS300(latestTest);
+                    break;
+                case "SS400":
+                    model = new ModelSS400(latestTest);
+                    break;
+                case "SSX":
+                case "SSX60":
+                    model = new ModelSsx(latestTest);
+                    break;
+                case "SSX wo Trans":
+                case "SSX60 wo Trans":
+                    model = new ModelSsxWoTrans(latestTest);
+                    break;
+                case "500RX":
+                case "950RXL":
+                case "1000RX":
+                case "950NXT":
+                    model = new ModelLradRx(latestTest);
+                    break;
+                case "2000X":
+                    model = new Model2000X(latestTest);
+                    break;
+                case "360Xm 1-ST 25V-60W":
+                case "360Xm 1-ST 100V-60W":
+                case "360Xm 2-ST 25V-60W":
+                case "360Xm 2-ST 100V-120W":
+                case "360Xm 2-ST 70V-60W":
+                case "360Xm 4-ST 100V-240W":
+                case "360Xm 1-ST wo Trans":
+                case "360Xm 2-ST wo Trans":
+                    model = new Model360Xm(latestTest);
+                    break;
+                case "360XL-MID 1-ST":
+                case "360XL-MID 2-ST":
+                    model = new Model300XlMid(latestTest);
+                    break;
+                default:
+                    throw new ArgumentException("productModel");
+            }
+            return model;
+        }
 
         private void button12_Click(object sender, EventArgs e)
         {
-            // Folder.networkDrive + DUT.productModel + " Test Log (Post-Test).csv" 
-            Console.WriteLine(DUT.productModel);
-        }
+            const string ERR_1 = "Please enter a System SN!";
+            const string ERR_2 = "No tests found!";
+            const string WARN_1 = "Multiple tests found. Latest test shown.";
 
+            string path = GetPathFromProductModelStr();
+            string unitSn = SN_Box1.Text;
+            if (unitSn.Trim() == "")
+            {
+                MessageBox.Show(ERR_1, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            List<List<string>> tests = GetAllUnitSnTests(path, unitSn);
+            switch(tests.Count)
+            {
+                case 0:
+                    MessageBox.Show(ERR_2, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                case 1:
+                    break;
+                default:
+                    MessageBox.Show(WARN_1, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+            }
+            List<string> latestTest = tests.Last();
+            Model model = GetModelFromProductModelStr(latestTest);
+        }
     }
 }
