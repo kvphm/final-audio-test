@@ -21,7 +21,7 @@ namespace Final_Audio_Test
         public string networkDriveForBenchTest = null;
         public string testDataFolder = null;  //Raw data for eack model name
     }
-    public class Product
+    public partial class Product
     {
         //Measured data
         public double[] SPL = new double[5];  //0=Max SPL, 1=Noise Output, 2=IPOD Max SPL    
@@ -117,6 +117,11 @@ namespace Final_Audio_Test
     }
 
     // Kevin's Code:
+    public partial class Product
+    {
+        public bool wasRetrieved = false;
+    }
+
     class Field
     {
         private static string VALUE_PASSED = "PASSED";
@@ -156,18 +161,20 @@ namespace Final_Audio_Test
             this._value = value;
         }
 
-        public static string TwoPFEval(string data1, string data2)
+        public static string TwoPfEval(string data1, string data2)
         {
             if (data1.Equals(VALUE_PASSED) && data2.Equals(VALUE_PASSED))
             {
                 return VALUE_PASSED;
             }
-            else if (data1.Equals(VALUE_PASSED) || data2.Equals(VALUE_PASSED))
+            else if (
+                (data1.Equals(VALUE_PASSED) && data2.Equals(VALUE_FAILED)) || 
+                (data1.Equals(VALUE_FAILED) && data2.Equals(VALUE_PASSED))
+            ) 
             {
                 return VALUE_FAILED;
             }
-            else
-            {
+            else {
                 return VALUE_NT;
             }
         }
@@ -308,7 +315,7 @@ namespace Final_Audio_Test
             
             driverSns.Add(new Field(INDEX_DRIVER_SN_1, data[COL_DRIVER_SN]));
 
-            subTests.Add(new Field(INDEX_MP3_INPUT_SENSITIVITY_MAX_SPL, Field.TwoPFEval(data[COL_MP3_SENSITIVITY], data[COL_MAX_SPL])));
+            subTests.Add(new Field(INDEX_MP3_INPUT_SENSITIVITY_MAX_SPL, Field.TwoPfEval(data[COL_MP3_SENSITIVITY], data[COL_MAX_SPL])));
             subTests.Add(new Field(INDEX_VOLUME_CONTROL_KNOB_FUNCTION, data[COL_VOLUME_FUNCTION]));
             subTests.Add(new Field(INDEX_MICROPHONE_INPUT_SENSITIVITY, data[COL_MIC_SENSITIVITY]));
             subTests.Add(new Field(INDEX_SYSTEM_BACKGROUND_NOISE_OUTPUT, data[COL_OUTPUT_NOISE]));
@@ -353,7 +360,7 @@ namespace Final_Audio_Test
 
             driverSns.Add(new Field(INDEX_DRIVER_SN_1, data[COL_DRIVER_SN]));
 
-            subTests.Add(new Field(INDEX_MP3_INPUT_SENSITIVITY_MAX_SPL, Field.TwoPFEval(data[COL_MP3_SENSITIVITY], data[COL_MAX_SPL])));
+            subTests.Add(new Field(INDEX_MP3_INPUT_SENSITIVITY_MAX_SPL, Field.TwoPfEval(data[COL_MP3_SENSITIVITY], data[COL_MAX_SPL])));
             subTests.Add(new Field(INDEX_VOLUME_CONTROL_KNOB_FUNCTION, data[COL_VOLUME_FUNCTION]));
             subTests.Add(new Field(INDEX_MICROPHONE_INPUT_SENSITIVITY, data[COL_MIC_SENSITIVITY]));
             subTests.Add(new Field(INDEX_SYSTEM_BACKGROUND_NOISE_OUTPUT,data[COL_OUTPUT_NOISE]));
@@ -403,7 +410,7 @@ namespace Final_Audio_Test
 
             driverSns.Add(new Field(INDEX_DRIVER_SN_1, data[COL_DRIVER_SN]));
 
-            subTests.Add(new Field(INDEX_MP3_INPUT2_SENSITIVITY_MAX_SPL, Field.TwoPFEval(data[COL_MP32_SENSITIVITY], data[COL_MAX_SPL])));
+            subTests.Add(new Field(INDEX_MP3_INPUT2_SENSITIVITY_MAX_SPL, Field.TwoPfEval(data[COL_MP32_SENSITIVITY], data[COL_MAX_SPL])));
             subTests.Add(new Field(INDEX_VOLUME_CONTROL_KNOB_FUNCTION, data[COL_VOL_FUNCTION]));
             subTests.Add(new Field(INDEX_MICROPHONE_INPUT_SENSITIVITY, data[COL_MIC_SENSITIVITY]));
             subTests.Add(new Field(INDEX_AUDIO_EFFECT_WITH_PWR_SW_ON_VB_ON, data[COL_PWR_ON_VB_ON]));
@@ -457,7 +464,7 @@ namespace Final_Audio_Test
             driverSns.Add(new Field(INDEX_DRIVER_SN_1, data[COL_DRIVER1_SN]));
             driverSns.Add(new Field(INDEX_DRIVER_SN_2, data[COL_DRIVER2_SN]));
 
-            subTests.Add(new Field(INDEX_MP3_INPUT_SENSITIVITY_MAX_SPL, Field.TwoPFEval(data[COL_MP3_SENSITIVITY], data[COL_MAX_SPL])));
+            subTests.Add(new Field(INDEX_MP3_INPUT_SENSITIVITY_MAX_SPL, Field.TwoPfEval(data[COL_MP3_SENSITIVITY], data[COL_MAX_SPL])));
             subTests.Add(new Field(INDEX_VOLUME_CONTROL_KNOB_FUNCTION, data[COL_VOL_FUNCTION]));
             subTests.Add(new Field(INDEX_MICROPHONE_INPUT_SENSITIVITY, data[COL_MIC_SENSITIVITY]));
             subTests.Add(new Field(INDEX_AUDIO_EFFECT_W_SOUND_WIDE_VB_ON, data[COL_WIDE_ON]));
@@ -510,7 +517,7 @@ namespace Final_Audio_Test
             driverSns.Add(new Field(INDEX_DRIVER_SN_1, data[COL_DRIVER1_SN]));
             driverSns.Add(new Field(INDEX_DRIVER_SN_2, data[COL_DRIVER2_SN]));
 
-            subTests.Add(new Field(INDEX_MP3_INPUT_SENSITIVITY_MAX_SPL, Field.TwoPFEval(data[COL_MP3_SENSITIVITY], data[COL_MAX_SPL])));
+            subTests.Add(new Field(INDEX_MP3_INPUT_SENSITIVITY_MAX_SPL, Field.TwoPfEval(data[COL_MP3_SENSITIVITY], data[COL_MAX_SPL])));
             subTests.Add(new Field(INDEX_VOLUME_CONTROL_KNOB_FUNCTION, data[COL_VOL_FUNCTION]));
             subTests.Add(new Field(INDEX_MICROPHONE_INPUT_SENSITIVITY, data[COL_MIC_SENSITIVITY]));
             subTests.Add(new Field(INDEX_AUDIO_EFFECT_W_SOUND_WIDE_VB_ON, data[COL_WIDE_ON]));
@@ -567,7 +574,7 @@ namespace Final_Audio_Test
             driverSns.Add(new Field(INDEX_DRIVER_SN_3, data[COL_DRIVER3_SN]));
             driverSns.Add(new Field(INDEX_DRIVER_SN_4, data[COL_DRIVER4_SN]));
 
-            subTests.Add(new Field(INDEX_MP3_INPUT_SENSITIVITY_MAX_SPL, Field.TwoPFEval(data[COL_MP3_SENSITIVITY], data[COL_MAX_SPL])));
+            subTests.Add(new Field(INDEX_MP3_INPUT_SENSITIVITY_MAX_SPL, Field.TwoPfEval(data[COL_MP3_SENSITIVITY], data[COL_MAX_SPL])));
             subTests.Add(new Field(INDEX_VOLUME_CONTROL_KNOB_FUNCTION, data[COL_VOL_FUNCTION]));
             subTests.Add(new Field(INDEX_MICROPHONE_INPUT_SENSITIVITY, data[COL_MIC_SENSITIVITY]));
             subTests.Add(new Field(INDEX_AUDIO_EFFECT_W_SOUND_WIDE_VB_ON, data[COL_WIDE_ON]));
@@ -624,7 +631,7 @@ namespace Final_Audio_Test
             driverSns.Add(new Field(INDEX_DRIVER_SN_3, data[COL_DRIVER3_SN]));
             driverSns.Add(new Field(INDEX_DRIVER_SN_4, data[COL_DRIVER4_SN]));
 
-            subTests.Add(new Field(INDEX_MP3_INPUT_SENSITIVITY_MAX_SPL, Field.TwoPFEval(data[COL_MP3_SENSITIVITY], data[COL_MAX_SPL])));
+            subTests.Add(new Field(INDEX_MP3_INPUT_SENSITIVITY_MAX_SPL, Field.TwoPfEval(data[COL_MP3_SENSITIVITY], data[COL_MAX_SPL])));
             subTests.Add(new Field(INDEX_VOLUME_CONTROL_KNOB_FUNCTION, data[COL_VOL_FUNCTION]));
             subTests.Add(new Field(INDEX_MICROPHONE_INPUT_SENSITIVITY, data[COL_MIC_SENSITIVITY]));
             subTests.Add(new Field(INDEX_AUDIO_EFFECT_W_SOUND_WIDE_VB_ON, data[COL_WIDE_ON]));
@@ -696,7 +703,7 @@ namespace Final_Audio_Test
             driverSns.Add(new Field(INDEX_DRIVER_SN_3, data[COL_DRIVER3_SN]));
             driverSns.Add(new Field(INDEX_DRIVER_SN_4, data[COL_DRIVER4_SN]));
 
-            subTests.Add(new Field(INDEX_MP3_INPUT_SENSITIVITY_MAX_SPL, Field.TwoPFEval(data[COL_MP3_SENSITIVITY], data[COL_MAX_SPL])));
+            subTests.Add(new Field(INDEX_MP3_INPUT_SENSITIVITY_MAX_SPL, Field.TwoPfEval(data[COL_MP3_SENSITIVITY], data[COL_MAX_SPL])));
             subTests.Add(new Field(INDEX_VOLUME_CONTROL_KNOB_FUNCTION, data[COL_VOL_FUNCTION]));
             subTests.Add(new Field(INDEX_MICROPHONE_INPUT_SENSITIVITY, data[COL_MIC_SENSITIVITY]));
             subTests.Add(new Field(INDEX_AUDIO_EFFECT_W_SOUND_WIDE_VB_ON, data[COL_WIDE_ON]));
@@ -758,7 +765,7 @@ namespace Final_Audio_Test
             driverSns.Add(new Field(INDEX_DRIVER_SN_6, data[COL_DRIVER6_SN]));
             driverSns.Add(new Field(INDEX_DRIVER_SN_7, data[COL_DRIVER7_SN]));
 
-            subTests.Add(new Field(INDEX_MP3_INPUT_SENSITIVITY_MAX_SPL, Field.TwoPFEval(data[COL_MP3_SENSITIVITY], data[COL_MAX_SPL])));
+            subTests.Add(new Field(INDEX_MP3_INPUT_SENSITIVITY_MAX_SPL, Field.TwoPfEval(data[COL_MP3_SENSITIVITY], data[COL_MAX_SPL])));
             subTests.Add(new Field(INDEX_VOLUME_CONTROL_KNOB_FUNCTION, data[COL_VOL_FUNCTION]));
             subTests.Add(new Field(INDEX_MICROPHONE_INPUT_SENSITIVITY, data[COL_MIC_SENSITIVITY]));
             subTests.Add(new Field(INDEX_OUTPUT_SENSITIVITY_W_AUDIO_OUTPUT_SWITCH_LOW, data[COL_AUDIO_OUTPUT_SW_OFF]));
@@ -786,7 +793,7 @@ namespace Final_Audio_Test
 
         private const int COL_REMARKS         = 23;
 
-        private const int INDEX_2U_CHASSIS                     = 0;
+        private const int INDEX_2U_CHASSIS                     = 2;
 
         private const int INDEX_INPUT_SENSITIVITY_MAX_SPL      = 0;
         private const int INDEX_VOLUME_CONTROL_KNOB_FUNCTION   = 1;
@@ -807,7 +814,7 @@ namespace Final_Audio_Test
             driverSns.Add(new Field(INDEX_DRIVER_SN_6, data[COL_DRIVER6_SN]));
             driverSns.Add(new Field(INDEX_DRIVER_SN_7, data[COL_DRIVER7_SN]));
 
-            subTests.Add(new Field(INDEX_INPUT_SENSITIVITY_MAX_SPL, Field.TwoPFEval(data[COL_MP3_SENSITIVITY], data[COL_MAX_SPL])));
+            subTests.Add(new Field(INDEX_INPUT_SENSITIVITY_MAX_SPL, Field.TwoPfEval(data[COL_MP3_SENSITIVITY], data[COL_MAX_SPL])));
             subTests.Add(new Field(INDEX_VOLUME_CONTROL_KNOB_FUNCTION, data[COL_VOLUME_FUNCTION]));
             subTests.Add(new Field(INDEX_MUTE_FUNCTION, data[COL_MUTE_FUNCTION]));
             subTests.Add(new Field(INDEX_SYSTEM_BACKGROUND_NOISE_OUTOUT, data[COL_OUTPUT_NOISE]));
@@ -870,7 +877,7 @@ namespace Final_Audio_Test
             driverSns.Add(new Field(INDEX_DRIVER_SN_6, data[COL_DRIVER6_SN]));
             driverSns.Add(new Field(INDEX_DRIVER_SN_7, data[COL_DRIVER7_SN]));
 
-            subTests.Add(new Field(INDEX_MP3_INPUT_SENSITIVITY_MAX_SPL, Field.TwoPFEval(data[COL_MP3_SENSITIVITY], data[COL_MAX_SPL])));
+            subTests.Add(new Field(INDEX_MP3_INPUT_SENSITIVITY_MAX_SPL, Field.TwoPfEval(data[COL_MP3_SENSITIVITY], data[COL_MAX_SPL])));
             subTests.Add(new Field(INDEX_VOLUME_CONTROL_KNOB_FUNCTION, data[COL_VOL_FUNCTION]));
             subTests.Add(new Field(INDEX_MICROPHONE_INPUT_SENSITIVITY, data[COL_MIC_SENSITIVITY]));
             subTests.Add(new Field(INDEX_AUDIO_EFFECT_W_SOUND_WIDE_VB_ON, data[COL_WIDE_ON]));
@@ -931,7 +938,7 @@ namespace Final_Audio_Test
             driverSns.Add(new Field(INDEX_DRIVER_SN_6, data[COL_DRIVER6_SN]));
             driverSns.Add(new Field(INDEX_DRIVER_SN_7, data[COL_DRIVER7_SN]));
 
-            subTests.Add(new Field(INDEX_MP3_INPUT_SENSITIVITY_MAX_SPL, Field.TwoPFEval(data[COL_MP3_SENSITIVITY], data[COL_MAX_SPL])));
+            subTests.Add(new Field(INDEX_MP3_INPUT_SENSITIVITY_MAX_SPL, Field.TwoPfEval(data[COL_MP3_SENSITIVITY], data[COL_MAX_SPL])));
             subTests.Add(new Field(INDEX_VOLUME_CONTROL_KNOB_FUNCTION, data[COL_VOL_FUNCTION]));
             subTests.Add(new Field(INDEX_MICROPHONE_INPUT_SENSITIVITY, data[COL_MIC_SENSITIVITY]));
             subTests.Add(new Field(INDEX_OUTPUT_SENSITIVITY_W_AUDIO_OUTPUT_SWITCH_MAX_VB_ON, data[COL_OUTPUT_SW_MAX_VB_ON]));
@@ -993,7 +1000,7 @@ namespace Final_Audio_Test
             driverSns.Add(new Field(INDEX_DRIVER_SN_6, data[COL_DRIVER6_SN]));
             driverSns.Add(new Field(INDEX_DRIVER_SN_7, data[COL_DRIVER7_SN]));
 
-            subTests.Add(new Field(INDEX_MP3_INPUT_SENSITIVITY_MAX_SPL, Field.TwoPFEval(data[COL_MP3_SENSITIVITY], data[COL_MAX_SPL])));
+            subTests.Add(new Field(INDEX_MP3_INPUT_SENSITIVITY_MAX_SPL, Field.TwoPfEval(data[COL_MP3_SENSITIVITY], data[COL_MAX_SPL])));
             subTests.Add(new Field(INDEX_VOLUME_CONTROL_KNOB_FUNCTION, data[COL_VOL_FUNCTION]));
             subTests.Add(new Field(INDEX_MICROPHONE_INPUT_SENSITIVITY, data[COL_MIC_SENSITIVITY]));
             subTests.Add(new Field(INDEX_AUDIO_EFFECT_W_SOUND_WIDE_VB_ON, data[COL_WIDE_ON]));
@@ -1026,7 +1033,7 @@ namespace Final_Audio_Test
             driverSns.Add(new Field(INDEX_DRIVER_SN_3, data[COL_DRIVER3_SN]));
             driverSns.Add(new Field(INDEX_DRIVER_SN_4, data[COL_DRIVER4_SN]));
 
-            subTests.Add(new Field(INDEX_SYSTEM_SENSITIVITY_MAX_SPL, Field.TwoPFEval(data[COL_SENSITIVITY], data[COL_MAX_SPL])));
+            subTests.Add(new Field(INDEX_SYSTEM_SENSITIVITY_MAX_SPL, Field.TwoPfEval(data[COL_SENSITIVITY], data[COL_MAX_SPL])));
         }
     }
 
@@ -1071,7 +1078,7 @@ namespace Final_Audio_Test
 
             driverSns.Add(new Field(INDEX_DRIVER_SN_1, data[COL_DRIVER_SN]));
 
-            subTests.Add(new Field(INDEX_MP3_INPUT_SENSITIVITY_MAX_SPL, Field.TwoPFEval(data[COL_MP3_SENSITIVITY], data[COL_MAX_SPL])));
+            subTests.Add(new Field(INDEX_MP3_INPUT_SENSITIVITY_MAX_SPL, Field.TwoPfEval(data[COL_MP3_SENSITIVITY], data[COL_MAX_SPL])));
             subTests.Add(new Field(INDEX_VOLUME_CONTROL_KNOB_FUNCTION, data[COL_VOL_FUNCTION]));
             subTests.Add(new Field(INDEX_MICROPHONE_INPUT_SENSITIVITY, data[COL_MIC_SENSITIVITY]));
             subTests.Add(new Field(INDEX_AUDIO_EFFECT_W_SOUND_WIDE_VB_ON, data[COL_WIDE_ON]));
@@ -1110,7 +1117,7 @@ namespace Final_Audio_Test
 
             driverSns.Add(new Field(INDEX_DRIVER_SN_1, data[COL_DRIVER_SN]));
 
-            subTests.Add(new Field(INDEX_HIGH_POWER_SENSITIVITY_MAX_SPL, Field.TwoPFEval(data[COL_HI_PWR], data[COL_MAX_SPL])));
+            subTests.Add(new Field(INDEX_HIGH_POWER_SENSITIVITY_MAX_SPL, Field.TwoPfEval(data[COL_HI_PWR], data[COL_MAX_SPL])));
             subTests.Add(new Field(INDEX_MID_POWER_SENSITIVITY, data[INDEX_MID_POWER_SENSITIVITY]));
             subTests.Add(new Field(INDEX_LOW_POWER_SENSITIVITY, data[INDEX_LOW_POWER_SENSITIVITY]));
         }
@@ -1133,7 +1140,7 @@ namespace Final_Audio_Test
 
             driverSns.Add(new Field(INDEX_DRIVER_SN_1, data[COL_DRIVER_SN]));
 
-            serialNo.Add(new Field(INDEX_SYSTEM_SENSITIVITY_MAX_SPL, Field.TwoPFEval(data[COL_SENSITIVITY], data[COL_MAX_SPL])));
+            serialNo.Add(new Field(INDEX_SYSTEM_SENSITIVITY_MAX_SPL, Field.TwoPfEval(data[COL_SENSITIVITY], data[COL_MAX_SPL])));
         }
     }
 
@@ -1163,7 +1170,7 @@ namespace Final_Audio_Test
             serialNo.Add(new Field(INDEX_DRIVER_PANEL, data[COL_DRIVER_PANEL_SN]));
             serialNo.Add(new Field(INDEX_TRANSFORMER, data[COL_TRANSFORMER_SN]));
 
-            subTests.Add(new Field(INDEX_HIGH_SENSITIVITY_MAX_SPL, Field.TwoPFEval(data[COL_HI_PWR], data[COL_MAX_SPL])));
+            subTests.Add(new Field(INDEX_HIGH_SENSITIVITY_MAX_SPL, Field.TwoPfEval(data[COL_HI_PWR], data[COL_MAX_SPL])));
             subTests.Add(new Field(INDEX_MID_POWER_SENSITIVITY, data[COL_MID_PWR]));
             subTests.Add(new Field(INDEX_LOW_POWER_SENSITIVITY, data[COL_LOW_PWR]));
         }
@@ -1195,7 +1202,7 @@ namespace Final_Audio_Test
             serialNo.Add(new Field(INDEX_DRIVER_PANEL, data[COL_DRIVER_PANEL_SN]));
             serialNo.Add(new Field(INDEX_TRANSFORMER, data[COL_TRANSFORMER_SN]));
 
-            subTests.Add(new Field(INDEX_HIGH_SENSITIVITY_MAX_SPL, Field.TwoPFEval(data[COL_HI_PWR], data[COL_MAX_SPL])));
+            subTests.Add(new Field(INDEX_HIGH_SENSITIVITY_MAX_SPL, Field.TwoPfEval(data[COL_HI_PWR], data[COL_MAX_SPL])));
             subTests.Add(new Field(INDEX_MID_POWER_SENSITIVITY, data[COL_MID_PWR]));
             subTests.Add(new Field(INDEX_LOW_POWER_SENSITIVITY, data[COL_LOW_PWR]));
         }
@@ -1222,7 +1229,7 @@ namespace Final_Audio_Test
 
             serialNo.Add(new Field(INDEX_DRIVER_PANEL, data[COL_DRIVER_PANEL_SN]));
 
-            subTests.Add(new Field(INDEX_SYSTEM_SENSITIVITY_MAX_SPL, Field.TwoPFEval(data[COL_SENSITIVITY], data[COL_MAX_SPL])));
+            subTests.Add(new Field(INDEX_SYSTEM_SENSITIVITY_MAX_SPL, Field.TwoPfEval(data[COL_SENSITIVITY], data[COL_MAX_SPL])));
             subTests.Add(new Field(INDEX_SYSTEM_FUNCTIONALITY_CHECK_W_ACCELEROMETER, data[COL_ACELEROMETER]));
         }
     }
@@ -1250,7 +1257,7 @@ namespace Final_Audio_Test
 
             serialNo.Add(new Field(INDEX_TRANSFORMER, data[COL_TRANSFORMER_SN]));
 
-            subTests.Add(new Field(INDEX_HIGH_POWER_SENSITIVITY_MAX_SPL, Field.TwoPFEval(data[COL_HI_PWR], data[COL_MAX_SPL])));
+            subTests.Add(new Field(INDEX_HIGH_POWER_SENSITIVITY_MAX_SPL, Field.TwoPfEval(data[COL_HI_PWR], data[COL_MAX_SPL])));
             subTests.Add(new Field(INDEX_MID_POWER_SENSITIVITY, data[COL_MID_PWR]));
             subTests.Add(new Field(INDEX_LOW_POWER_SENSITIVITY, data[COL_LOW_PWR]));
         }
@@ -1269,7 +1276,7 @@ namespace Final_Audio_Test
         {
             general.Add(new Field(INDEX_REMARKS, data[COL_REMARKS]));
 
-            subTests.Add(new Field(INDEX_SYSTEM_SENSITIVITY_MAX_SPL, Field.TwoPFEval(data[COL_SENSITIVITY], data[COL_MAX_SPL])));
+            subTests.Add(new Field(INDEX_SYSTEM_SENSITIVITY_MAX_SPL, Field.TwoPfEval(data[COL_SENSITIVITY], data[COL_MAX_SPL])));
         }
     }
 
@@ -1387,7 +1394,7 @@ namespace Final_Audio_Test
             driverSns.Add(new Field(INDEX_DRIVER_SN_7, data[COL_DRIVER7_SN]));
             driverSns.Add(new Field(INDEX_DRIVER_SN_8, data[COL_DRIVER8_SN]));
 
-            subTests.Add(new Field(INDEX_SYSTEM_SENSITIVITY_MAX_SPL, Field.TwoPFEval(data[COL_MP3_SENSITIVITY], data[COL_MAX_SPL])));
+            subTests.Add(new Field(INDEX_SYSTEM_SENSITIVITY_MAX_SPL, Field.TwoPfEval(data[COL_MP3_SENSITIVITY], data[COL_MAX_SPL])));
         }
     }
 
@@ -1425,10 +1432,10 @@ namespace Final_Audio_Test
             driverSns.Add(new Field(INDEX_DRIVER_SN_3, data[COL_DRIVER3_SN]));
             driverSns.Add(new Field(INDEX_DRIVER_SN_4, data[COL_DRIVER4_SN]));
 
-            subTests.Add(new Field(INDEX_HIGH_POWER_SENSITIVITY_MAX_SPL_TOP, Field.TwoPFEval(data[COL_HI_PWR_TOP], data[COL_MAX_SPL_TOP])));
+            subTests.Add(new Field(INDEX_HIGH_POWER_SENSITIVITY_MAX_SPL_TOP, Field.TwoPfEval(data[COL_HI_PWR_TOP], data[COL_MAX_SPL_TOP])));
             subTests.Add(new Field(INDEX_MID_POWER_SENSITIVITY_TOP, data[COL_MID_PWR_TOP]));
             subTests.Add(new Field(INDEX_LOW_POWER_SENSITIVITY_TOP, data[COL_LOW_PWR_TOP]));
-            subTests.Add(new Field(INDEX_HIGH_POWER_SENSITIVITY_MAX_SPL_BOT, Field.TwoPFEval(data[COL_HI_PWR_BOT], data[COL_MAX_SPL_BOT])));
+            subTests.Add(new Field(INDEX_HIGH_POWER_SENSITIVITY_MAX_SPL_BOT, Field.TwoPfEval(data[COL_HI_PWR_BOT], data[COL_MAX_SPL_BOT])));
             subTests.Add(new Field(INDEX_MID_POWER_SENSITIVITY_BOT, data[COL_MID_PWR_BOT]));
             subTests.Add(new Field(INDEX_LOW_POWER_SENSITIVITY_BOT, data[COL_LOW_PWR_BOT]));
         }
@@ -1453,7 +1460,7 @@ namespace Final_Audio_Test
             driverSns.Add(new Field(INDEX_DRIVER_SN_1, data[COL_DRIVER1_SN]));
             driverSns.Add(new Field(INDEX_DRIVER_SN_2, data[COL_DRIVER2_SN]));
 
-            subTests.Add(new Field(INDEX_SYSTEM_SENSITIVITY_MAX_SPL, Field.TwoPFEval(data[COL_SENSITIVITY], data[COL_MAX_SPL])));
+            subTests.Add(new Field(INDEX_SYSTEM_SENSITIVITY_MAX_SPL, Field.TwoPfEval(data[COL_SENSITIVITY], data[COL_MAX_SPL])));
         }
     }
 }

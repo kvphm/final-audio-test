@@ -268,7 +268,7 @@ namespace Final_Audio_Test
             }
 
             //     if (!APx.FftSpectrumSignalMonitor.IsDocked) APx.FftSpectrumSignalMonitor.Dock();
-            // TEMP DEBUG
+            // TempDebug
             // if (!APx.ScopeSignalMonitor.IsDocked) APx.ScopeSignalMonitor.Dock();
             // if (APx.SignalMeters.IsDocked) APx.SignalMeters.Undock();
         }
@@ -2392,7 +2392,15 @@ namespace Final_Audio_Test
             SaveData(DUT.FileNameExt);
 
             //troubleShootingCheckBox.Checked = false;
-            remarkBox.Clear();
+
+            // TempDebug
+            if (DUT.wasRetrieved)
+            {
+                date_Stamp.Text = DateTime.Now.ToString("MM/dd/yyyy");
+                time_Stamp.Text = DateTime.Now.ToString("hh:mm tt");
+                DUT.wasRetrieved = false;
+            }
+            // remarkBox.Clear();
             DUT.resetVariablesToDefault();
             setupTestSelection();
             resetreportFormat();
@@ -8042,14 +8050,14 @@ namespace Final_Audio_Test
         }
 
         /*** Kevin's code starts here ***/
-
+        
         /// <summary>
         /// Gets the path as a string from product model.
         /// </summary>
         /// <returns></returns>
         private string GetPathFromProductModelStr()
         {
-            const string PREFIX = "Z:\\Kevin Pham\\"; // Final prefix would be Folder.networkDrive
+            const string PREFIX = "Z:\\Kevin Pham\\"; // Prefix would be Folder.networkDrive later
             string infix;
             const string SUFFIX = " Test Log (Post-Test).csv";
             switch (DUT.productModel)
@@ -8285,10 +8293,15 @@ namespace Final_Audio_Test
             return model;
         }
 
-        Color GetColorFromSubTestValue(string value)
+        /// <summary>
+        /// Get the color that represents its tests value.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        Color GetColorFromSubTestVerdict(string verdict)
         {
             Color color;
-            switch(value)
+            switch(verdict)
             {
                 case "PASSED":
                     color = Color.ForestGreen;
@@ -8303,6 +8316,9 @@ namespace Final_Audio_Test
             return color;
         }
 
+        /// <summary>
+        /// Represents the type of fields.
+        /// </summary>
         enum FieldType
         {
             GENERAL,
@@ -8320,7 +8336,6 @@ namespace Final_Audio_Test
         /// <exception cref="ArgumentException"></exception>
         void DisplayResults(FieldType fieldType, int index, string value)
         {
-            if (value.Trim().ToLower() == "na" || value.Trim().ToLower() == "n/a") return;
             switch (fieldType)
             {
                 case FieldType.GENERAL:
@@ -8417,43 +8432,43 @@ namespace Final_Audio_Test
                     switch(index)
                     {
                         case 0:
-                            testResult0.ForeColor = GetColorFromSubTestValue(value);
+                            testResult0.ForeColor = GetColorFromSubTestVerdict(value);
                             testResult0.Text = value;
                             break;
                         case 1:
-                            testResult1.ForeColor = GetColorFromSubTestValue(value);
+                            testResult1.ForeColor = GetColorFromSubTestVerdict(value);
                             testResult1.Text = value;
                             break;
                         case 2:
-                            testResult2.ForeColor = GetColorFromSubTestValue(value);
+                            testResult2.ForeColor = GetColorFromSubTestVerdict(value);
                             testResult2.Text = value;
                             break;
                         case 3:
-                            testResult3.ForeColor = GetColorFromSubTestValue(value);
+                            testResult3.ForeColor = GetColorFromSubTestVerdict(value);
                             testResult3.Text = value;
                             break;
                         case 4:
-                            testResult4.ForeColor = GetColorFromSubTestValue(value);
+                            testResult4.ForeColor = GetColorFromSubTestVerdict(value);
                             testResult4.Text = value;
                             break;
                         case 5:
-                            testResult5.ForeColor = GetColorFromSubTestValue(value);
+                            testResult5.ForeColor = GetColorFromSubTestVerdict(value);
                             testResult5.Text = value;
                             break;
                         case 6:
-                            testResult6.ForeColor = GetColorFromSubTestValue(value);
+                            testResult6.ForeColor = GetColorFromSubTestVerdict(value);
                             testResult6.Text = value;
                             break;
                         case 7:
-                            testResult7.ForeColor = GetColorFromSubTestValue(value);
+                            testResult7.ForeColor = GetColorFromSubTestVerdict(value);
                             testResult7.Text = value;
                             break;
                         case 8:
-                            testResult8.ForeColor = GetColorFromSubTestValue(value);
+                            testResult8.ForeColor = GetColorFromSubTestVerdict(value);
                             testResult8.Text = value;
                             break;
                         case 9:
-                            testResult9.ForeColor = GetColorFromSubTestValue(value);
+                            testResult9.ForeColor = GetColorFromSubTestVerdict(value);
                             testResult9.Text = value;
                             break;
                         default:
@@ -8463,12 +8478,28 @@ namespace Final_Audio_Test
             }
         }
 
+        /// <summary>
+        /// Iterates through each type of field in a Model and display its values from the data.
+        /// </summary>
+        /// <param name="model"></param>
         void DisplayValues(Model model)
         {
-            foreach (var aField in model.general) DisplayResults(FieldType.GENERAL, aField.Index, aField.Value);    
-            foreach (var aField in model.serialNo) DisplayResults(FieldType.SERIAL_NO, aField.Index, aField.Value);
-            foreach (var aField in model.driverSns) DisplayResults(FieldType.DRIVER_SNS, aField.Index, aField.Value);
-            foreach (var aField in model.subTests) DisplayResults(FieldType.SUBTESTS, aField.Index, aField.Value);
+            foreach (var aField in model.general)
+            {
+                DisplayResults(FieldType.GENERAL, aField.Index, aField.Value);
+            }
+            foreach (var aField in model.serialNo)
+            {
+                DisplayResults(FieldType.SERIAL_NO, aField.Index, aField.Value);
+            }
+            foreach (var aField in model.driverSns)
+            {
+                DisplayResults(FieldType.DRIVER_SNS, aField.Index, aField.Value);
+            }
+            foreach (var aField in model.subTests)
+            {
+                DisplayResults(FieldType.SUBTESTS, aField.Index, aField.Value);
+            }
         }
 
         /// <summary>
@@ -8490,7 +8521,6 @@ namespace Final_Audio_Test
                 return;
             }
             List<List<string>> tests = GetAllUnitSnTests(path, unitSn);
-            Console.WriteLine(tests.Count);
             switch(tests.Count)
             {
                 case 0:
@@ -8499,12 +8529,13 @@ namespace Final_Audio_Test
                 case 1: 
                     break;
                 default:
-                    MessageBox.Show(WARN_1, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(WARN_1, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     break;
             }
             List<string> latestTest = tests.Last();
             Model model = GetModelFromProductModelStr(latestTest);
             DisplayValues(model);
+            DUT.wasRetrieved = true;
         }
     }
 }
