@@ -8042,11 +8042,16 @@ namespace Final_Audio_Test
         }
 
         /*** Kevin's code starts here ***/
+
+        /// <summary>
+        /// Gets the path as a string from product model.
+        /// </summary>
+        /// <returns></returns>
         private string GetPathFromProductModelStr()
         {
-            const string PREFIX = "Z:\\Kevin Pham\\"; // Folder.networkDrive
-            const string SUFFIX = " Test Log (Post-Test).csv";
+            const string PREFIX = "Z:\\Kevin Pham\\"; // Final prefix would be Folder.networkDrive
             string infix;
+            const string SUFFIX = " Test Log (Post-Test).csv";
             switch (DUT.productModel)
             {
                 case "450XL Extended Test":
@@ -8114,8 +8119,16 @@ namespace Final_Audio_Test
             return PREFIX + infix + SUFFIX;
         }
 
+        /// <summary>
+        /// Create a list of tests from the desired unit SN and product model.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="unitSn"></param>
+        /// <returns></returns>
         private List<List<string>> GetAllUnitSnTests(string path, string unitSn)
         {
+            const int COL_MODEL = 6;
+
             List<List<string>> allTestsFromSn = new List<List<string>>();
             using (StreamReader reader = new StreamReader(path))
             {
@@ -8126,7 +8139,7 @@ namespace Final_Audio_Test
                     line = reader.ReadLine();
                     var values = line.Split(';');
                     List<String> row = values[0].Split(',').ToList();
-                    if (row[0].Trim() == unitSn)
+                    if (row[0] == unitSn && row[COL_MODEL] == DUT.productModel)
                     {
                         int headerRowSize = File.ReadLines(path).First().Split(',').Length;
                         int selectedRowSize = row.Count;
@@ -8145,6 +8158,12 @@ namespace Final_Audio_Test
             return allTestsFromSn;
         }
 
+        /// <summary>
+        /// Get a Model from DUT.productModel.
+        /// </summary>
+        /// <param name="latestTest"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
         Model GetModelFromProductModelStr(List<string> latestTest)
         {
             Model model;
@@ -8266,6 +8285,197 @@ namespace Final_Audio_Test
             return model;
         }
 
+        Color GetColorFromSubTestValue(string value)
+        {
+            Color color;
+            switch(value)
+            {
+                case "PASSED":
+                    color = Color.ForestGreen;
+                    break;
+                case "FAILED":
+                    color = Color.Red; 
+                    break;
+                default:
+                    color = Color.LightGray;
+                    break;
+            }
+            return color;
+        }
+
+        enum FieldType
+        {
+            GENERAL,
+            SERIAL_NO,
+            DRIVER_SNS,
+            SUBTESTS
+        }
+
+        /// <summary>
+        /// Displays the fields from the latest test.
+        /// </summary>
+        /// <param name="fieldType"></param>
+        /// <param name="index"></param>
+        /// <param name="value"></param>
+        /// <exception cref="ArgumentException"></exception>
+        void DisplayResults(FieldType fieldType, int index, string value)
+        {
+            if (value.Trim().ToLower() == "na" || value.Trim().ToLower() == "n/a") return;
+            switch (fieldType)
+            {
+                case FieldType.GENERAL:
+                    switch (index)
+                    {
+                        case 0:
+                            oper_Ini.Text = value;
+                            break;
+                        case 1:
+                            WO_No.Text = value;
+                            break;
+                        case 2:
+                            date_Stamp.Text = value;
+                            break;
+                        case 3:
+                            time_Stamp.Text = value;
+                            break;
+                        case 4:
+                            remarkBox.Text = value;
+                            break;
+                        default:
+                            throw new ArgumentException("index");
+                    }
+                    break;
+                case FieldType.SERIAL_NO:
+                    switch(index)
+                    {
+                        case 0:
+                            SN_Box1.Text = value;
+                            break;
+                        case 1:
+                            SN_Box2.Text = value;
+                            break;
+                        case 2:
+                            SN_Box3.Text = value;
+                            break;
+                        case 3:
+                            SN_Box4.Text = value;
+                            break;
+                        case 4:
+                            SN_Box5.Text = value;
+                            break;
+                        case 5:
+                            SN_Box6.Text = value;
+                            break;
+                        case 6:
+                            SN_Box7.Text = value;
+                            break;
+                        case 7:
+                            SN_Box8.Text = value;
+                            break;
+                        case 8:
+                            SN_Box9.Text = value;
+                            break;
+                        case 9:
+                            SN_Box10.Text = value;
+                            break;
+                        default:
+                            throw new ArgumentException("index");
+                    }
+                    break;
+                case FieldType.DRIVER_SNS:
+                    switch(index)
+                    {
+                        case 0:
+                            driverSN_Box1.Text = value;
+                            break;
+                        case 1:
+                            driverSN_Box2.Text = value;
+                            break;
+                        case 2:
+                            driverSN_Box3.Text = value;
+                            break;
+                        case 3:
+                            driverSN_Box4.Text = value;
+                            break;
+                        case 4:
+                            driverSN_Box5.Text = value;
+                            break;
+                        case 5:
+                            driverSN_Box6.Text = value;
+                            break;
+                        case 6:
+                            driverSN_Box7.Text = value;
+                            break;
+                        case 7:
+                            driverSN_Box8.Text = value;
+                            break;
+                        default:
+                            throw new ArgumentException("index");
+                    }
+                    break;
+                case FieldType.SUBTESTS:
+                    switch(index)
+                    {
+                        case 0:
+                            testResult0.ForeColor = GetColorFromSubTestValue(value);
+                            testResult0.Text = value;
+                            break;
+                        case 1:
+                            testResult1.ForeColor = GetColorFromSubTestValue(value);
+                            testResult1.Text = value;
+                            break;
+                        case 2:
+                            testResult2.ForeColor = GetColorFromSubTestValue(value);
+                            testResult2.Text = value;
+                            break;
+                        case 3:
+                            testResult3.ForeColor = GetColorFromSubTestValue(value);
+                            testResult3.Text = value;
+                            break;
+                        case 4:
+                            testResult4.ForeColor = GetColorFromSubTestValue(value);
+                            testResult4.Text = value;
+                            break;
+                        case 5:
+                            testResult5.ForeColor = GetColorFromSubTestValue(value);
+                            testResult5.Text = value;
+                            break;
+                        case 6:
+                            testResult6.ForeColor = GetColorFromSubTestValue(value);
+                            testResult6.Text = value;
+                            break;
+                        case 7:
+                            testResult7.ForeColor = GetColorFromSubTestValue(value);
+                            testResult7.Text = value;
+                            break;
+                        case 8:
+                            testResult8.ForeColor = GetColorFromSubTestValue(value);
+                            testResult8.Text = value;
+                            break;
+                        case 9:
+                            testResult9.ForeColor = GetColorFromSubTestValue(value);
+                            testResult9.Text = value;
+                            break;
+                        default:
+                            throw new ArgumentException("index");
+                    }
+                    break;
+            }
+        }
+
+        void DisplayValues(Model model)
+        {
+            foreach (var aField in model.general) DisplayResults(FieldType.GENERAL, aField.Index, aField.Value);    
+            foreach (var aField in model.serialNo) DisplayResults(FieldType.SERIAL_NO, aField.Index, aField.Value);
+            foreach (var aField in model.driverSns) DisplayResults(FieldType.DRIVER_SNS, aField.Index, aField.Value);
+            foreach (var aField in model.subTests) DisplayResults(FieldType.SUBTESTS, aField.Index, aField.Value);
+        }
+
+        /// <summary>
+        /// Emits when the "Retrieve" button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button12_Click(object sender, EventArgs e)
         {
             const string ERR_1 = "Please enter a System SN!";
@@ -8280,12 +8490,13 @@ namespace Final_Audio_Test
                 return;
             }
             List<List<string>> tests = GetAllUnitSnTests(path, unitSn);
+            Console.WriteLine(tests.Count);
             switch(tests.Count)
             {
                 case 0:
                     MessageBox.Show(ERR_2, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
-                case 1:
+                case 1: 
                     break;
                 default:
                     MessageBox.Show(WARN_1, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -8293,6 +8504,7 @@ namespace Final_Audio_Test
             }
             List<string> latestTest = tests.Last();
             Model model = GetModelFromProductModelStr(latestTest);
+            DisplayValues(model);
         }
     }
 }

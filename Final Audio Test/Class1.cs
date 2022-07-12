@@ -181,6 +181,7 @@ namespace Final_Audio_Test
         protected const int COL_TIME      = 3;
         protected const int COL_WO_NO     = 4;
         protected const int COL_SYSTEM_PF = 5;
+        protected const int COL_MODEL     = 6;
 
         protected const int INDEX_OPER_INI    = 0;
         protected const int INDEX_WO_NO       = 1;
@@ -200,10 +201,58 @@ namespace Final_Audio_Test
 
         protected const int INDEX_REMARKS     = 4;
 
-        protected List<Field> general;
-        protected List<Field> serialNo;
-        protected List<Field> driverSns;
-        protected List<Field> subTests;
+        public List<Field> general;
+        public List<Field> serialNo;
+        public List<Field> driverSns;
+        public List<Field> subTests;
+
+        public List<Field> General
+        {
+            get
+            {
+                return general;
+            }
+            set
+            {
+                this.general = value;
+            }
+        }
+
+        public List<Field> SerialNo
+        {
+            get
+            {
+                return serialNo;
+            }
+            set
+            {
+                this.serialNo = value;
+            }
+        }
+
+        public List<Field> DriverSns
+        {
+            get
+            {
+                return driverSns;
+            }
+            set
+            {
+                this.driverSns = value;
+            }
+        }
+
+        public List<Field> SubTests
+        {
+            get
+            {
+                return subTests;
+            }
+            set
+            {
+                this.subTests = value;
+            }
+        }
 
         protected Model(List<string> data)
         {

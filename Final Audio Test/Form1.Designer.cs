@@ -925,10 +925,10 @@
             this.button12.FlatAppearance.BorderSize = 3;
             this.button12.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button12.Location = new System.Drawing.Point(5, 383);
+            this.button12.Location = new System.Drawing.Point(5, 374);
             this.button12.Margin = new System.Windows.Forms.Padding(2);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(88, 42);
+            this.button12.Size = new System.Drawing.Size(88, 51);
             this.button12.TabIndex = 43;
             this.button12.Text = "RETRIEVE";
             this.button12.UseVisualStyleBackColor = true;
