@@ -2393,14 +2393,14 @@ namespace Final_Audio_Test
 
             //troubleShootingCheckBox.Checked = false;
 
-            // TempDebug
+            
             if (DUT.wasRetrieved)
             {
                 date_Stamp.Text = DateTime.Now.ToString("MM/dd/yyyy");
                 time_Stamp.Text = DateTime.Now.ToString("hh:mm tt");
                 DUT.wasRetrieved = false;
             }
-            // remarkBox.Clear();
+            // remarkBox.Clear(); TempDebug
             DUT.resetVariablesToDefault();
             setupTestSelection();
             resetreportFormat();

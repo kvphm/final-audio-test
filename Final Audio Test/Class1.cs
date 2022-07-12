@@ -1305,7 +1305,7 @@ namespace Final_Audio_Test
         private const int COL_COOLINGFANSCHK  = 25;
         private const int COL_OUTPUT_NOISE    = 26;
 
-        private const int COL_REMARKS         = 29;
+        private const int COL_REMARKS         = 30;
 
         private const int INDEX_FIRMWARE_VER               = 1;
         private const int INDEX_ELECTRONICS                = 2;
