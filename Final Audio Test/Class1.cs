@@ -1515,7 +1515,7 @@ namespace Final_Audio_Test
 
         private const int COL_FREQ_SWEEP = 23;
         private const int COL_MAXSPL = 24;
-        private const int COL_OUTPUT_NOISE = 26;
+        private const int COL_OUTPUT_NOISE = 25;
 
         private const int COL_REMARKS = 30;
 
