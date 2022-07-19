@@ -1280,7 +1280,7 @@ namespace Final_Audio_Test
         }
     }
 
-    class ModelLradRx : Model
+    class ModelLradRx500Rx : Model
     {
         private const int COL_FIRMWARE_VER    = 7;
         private const int COL_ELEC_SN         = 8;
@@ -1322,7 +1322,7 @@ namespace Final_Audio_Test
         private const int INDEX_MAXIMUM_OUTPUT_NOISE_LEVEL = 6;
         private const int INDEX_COOLING_FANS_FUNCTION      = 9;
 
-        public ModelLradRx(List<string> data) : base(data)
+        public ModelLradRx500Rx(List<string> data) : base(data)
         {
             general.Add(new Field(INDEX_REMARKS, data[COL_REMARKS]));
 
@@ -1348,6 +1348,216 @@ namespace Final_Audio_Test
             subTests.Add(new Field(INDEX_MAXIMUM_SPL, data[COL_MAXSPL]));
             subTests.Add(new Field(INDEX_MAXIMUM_OUTPUT_NOISE_LEVEL, data[COL_OUTPUT_NOISE]));
             subTests.Add(new Field(INDEX_COOLING_FANS_FUNCTION, data[COL_COOLINGFANSCHK]));
+        }
+    }
+
+    class ModelLradRx950Rxl : Model
+    {
+        private const int COL_FIRMWARE_VER = 7;
+        private const int COL_ELEC_SN = 8;
+        private const int COL_HEAD_NO_1_SN = 9;
+        private const int COL_HEAD_NO_2_SN = 10;
+        private const int COL_AMC_NO_1_SN = 11;
+        private const int COL_AMC_NO_2_SN = 12;
+        private const int COL_LIGHT_SN = 13;
+        private const int COL_CAMERA_SN = 14;
+        private const int COL_48VDC_SUPPLY_SN = 15;
+
+        private const int COL_DRIVER1_SN = 16;
+        private const int COL_DRIVER2_SN = 17;
+        private const int COL_DRIVER3_SN = 18;
+        private const int COL_DRIVER4_SN = 19;
+        private const int COL_DRIVER5_SN = 20;
+        private const int COL_DRIVER6_SN = 21;
+        private const int COL_DRIVER7_SN = 22;
+
+        private const int COL_FREQ_SWEEP = 23;
+        private const int COL_MAXSPL = 24;
+        private const int COL_COOLINGFANSCHK = 25;
+        private const int COL_OUTPUT_NOISE = 26;
+
+        private const int COL_REMARKS = 30;
+
+        private const int INDEX_FIRMWARE_VER = 1;
+        private const int INDEX_ELECTRONICS = 2;
+        private const int INDEX_HEAD_NO_1 = 3;
+        private const int INDEX_HEAD_NO_2 = 4;
+        private const int INDEX_AMC_NO_1 = 5;
+        private const int INDEX_AMC_NO_2 = 6;
+        private const int INDEX_LIGHT = 7;
+        private const int INDEX_CAMERA = 8;
+        private const int INDEX_48VDC_EXT_PS = 9;
+
+        private const int INDEX_FREQUENCY_SWEEP = 0;
+        private const int INDEX_MAXIMUM_SPL = 1;
+        private const int INDEX_MAXIMUM_OUTPUT_NOISE_LEVEL = 6;
+        private const int INDEX_COOLING_FANS_FUNCTION = 9;
+
+        public ModelLradRx950Rxl(List<string> data) : base(data)
+        {
+            general.Add(new Field(INDEX_REMARKS, data[COL_REMARKS]));
+
+            serialNo.Add(new Field(INDEX_FIRMWARE_VER, data[COL_FIRMWARE_VER]));
+            serialNo.Add(new Field(INDEX_ELECTRONICS, data[COL_ELEC_SN]));
+            serialNo.Add(new Field(INDEX_HEAD_NO_1, data[COL_HEAD_NO_1_SN]));
+            serialNo.Add(new Field(INDEX_HEAD_NO_2, data[COL_HEAD_NO_2_SN]));
+            serialNo.Add(new Field(INDEX_AMC_NO_1, data[COL_AMC_NO_1_SN]));
+            serialNo.Add(new Field(INDEX_AMC_NO_2, data[COL_AMC_NO_2_SN]));
+            serialNo.Add(new Field(INDEX_LIGHT, data[COL_LIGHT_SN]));
+            serialNo.Add(new Field(INDEX_CAMERA, data[COL_CAMERA_SN]));
+            serialNo.Add(new Field(INDEX_48VDC_EXT_PS, data[COL_48VDC_SUPPLY_SN]));
+
+            driverSns.Add(new Field(INDEX_DRIVER_SN_1, data[COL_DRIVER1_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_2, data[COL_DRIVER2_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_3, data[COL_DRIVER3_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_4, data[COL_DRIVER4_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_5, data[COL_DRIVER5_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_6, data[COL_DRIVER6_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_7, data[COL_DRIVER7_SN]));
+
+            subTests.Add(new Field(INDEX_FREQUENCY_SWEEP, data[COL_FREQ_SWEEP]));
+            subTests.Add(new Field(INDEX_MAXIMUM_SPL, data[COL_MAXSPL]));
+            subTests.Add(new Field(INDEX_MAXIMUM_OUTPUT_NOISE_LEVEL, data[COL_OUTPUT_NOISE]));
+            subTests.Add(new Field(INDEX_COOLING_FANS_FUNCTION, data[COL_COOLINGFANSCHK]));
+        }
+    }
+
+    class ModelLradRx1000Rx : Model
+    {
+        private const int COL_FIRMWARE_VER = 7;
+        private const int COL_ELEC_SN = 8;
+        private const int COL_HEAD_NO_1_SN = 9;
+        private const int COL_HEAD_NO_2_SN = 10;
+        private const int COL_AMC_NO_1_SN = 11;
+        private const int COL_AMC_NO_2_SN = 12;
+        private const int COL_LIGHT_SN = 13;
+        private const int COL_CAMERA_SN = 14;
+        private const int COL_48VDC_SUPPLY_SN = 15;
+
+        private const int COL_DRIVER1_SN = 16;
+        private const int COL_DRIVER2_SN = 17;
+        private const int COL_DRIVER3_SN = 18;
+        private const int COL_DRIVER4_SN = 19;
+        private const int COL_DRIVER5_SN = 20;
+        private const int COL_DRIVER6_SN = 21;
+        private const int COL_DRIVER7_SN = 22;
+
+        private const int COL_FREQ_SWEEP = 23;
+        private const int COL_MAXSPL = 24;
+        private const int COL_COOLINGFANSCHK = 25;
+        private const int COL_OUTPUT_NOISE = 26;
+
+        private const int COL_REMARKS = 30;
+
+        private const int INDEX_FIRMWARE_VER = 1;
+        private const int INDEX_ELECTRONICS = 2;
+        private const int INDEX_HEAD_NO_1 = 3;
+        private const int INDEX_HEAD_NO_2 = 4;
+        private const int INDEX_AMC_NO_1 = 5;
+        private const int INDEX_AMC_NO_2 = 6;
+        private const int INDEX_LIGHT = 7;
+        private const int INDEX_CAMERA = 8;
+        private const int INDEX_48VDC_EXT_PS = 9;
+
+        private const int INDEX_FREQUENCY_SWEEP = 0;
+        private const int INDEX_MAXIMUM_SPL = 1;
+        private const int INDEX_MAXIMUM_OUTPUT_NOISE_LEVEL = 6;
+        private const int INDEX_COOLING_FANS_FUNCTION = 9;
+
+        public ModelLradRx1000Rx(List<string> data) : base(data)
+        {
+            general.Add(new Field(INDEX_REMARKS, data[COL_REMARKS]));
+
+            serialNo.Add(new Field(INDEX_FIRMWARE_VER, data[COL_FIRMWARE_VER]));
+            serialNo.Add(new Field(INDEX_ELECTRONICS, data[COL_ELEC_SN]));
+            serialNo.Add(new Field(INDEX_HEAD_NO_1, data[COL_HEAD_NO_1_SN]));
+            serialNo.Add(new Field(INDEX_HEAD_NO_2, data[COL_HEAD_NO_2_SN]));
+            serialNo.Add(new Field(INDEX_AMC_NO_1, data[COL_AMC_NO_1_SN]));
+            serialNo.Add(new Field(INDEX_AMC_NO_2, data[COL_AMC_NO_2_SN]));
+            serialNo.Add(new Field(INDEX_LIGHT, data[COL_LIGHT_SN]));
+            serialNo.Add(new Field(INDEX_CAMERA, data[COL_CAMERA_SN]));
+            serialNo.Add(new Field(INDEX_48VDC_EXT_PS, data[COL_48VDC_SUPPLY_SN]));
+
+            driverSns.Add(new Field(INDEX_DRIVER_SN_1, data[COL_DRIVER1_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_2, data[COL_DRIVER2_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_3, data[COL_DRIVER3_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_4, data[COL_DRIVER4_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_5, data[COL_DRIVER5_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_6, data[COL_DRIVER6_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_7, data[COL_DRIVER7_SN]));
+
+            subTests.Add(new Field(INDEX_FREQUENCY_SWEEP, data[COL_FREQ_SWEEP]));
+            subTests.Add(new Field(INDEX_MAXIMUM_SPL, data[COL_MAXSPL]));
+            subTests.Add(new Field(INDEX_MAXIMUM_OUTPUT_NOISE_LEVEL, data[COL_OUTPUT_NOISE]));
+            subTests.Add(new Field(INDEX_COOLING_FANS_FUNCTION, data[COL_COOLINGFANSCHK]));
+        }
+    }
+
+    class ModelLradRx950Nxt : Model
+    {
+        private const int COL_FIRMWARE_VER = 7;
+        private const int COL_ELEC_SN = 8;
+        private const int COL_HEAD_NO_1_SN = 9;
+        private const int COL_HEAD_NO_2_SN = 10;
+        private const int COL_AMC_NO_1_SN = 11;
+        private const int COL_AMC_NO_2_SN = 12;
+        private const int COL_LIGHT_SN = 13;
+        private const int COL_CAMERA_SN = 14;
+        private const int COL_48VDC_SUPPLY_SN = 15;
+
+        private const int COL_DRIVER1_SN = 16;
+        private const int COL_DRIVER2_SN = 17;
+        private const int COL_DRIVER3_SN = 18;
+        private const int COL_DRIVER4_SN = 19;
+        private const int COL_DRIVER5_SN = 20;
+        private const int COL_DRIVER6_SN = 21;
+        private const int COL_DRIVER7_SN = 22;
+
+        private const int COL_FREQ_SWEEP = 23;
+        private const int COL_MAXSPL = 24;
+        private const int COL_OUTPUT_NOISE = 26;
+
+        private const int COL_REMARKS = 30;
+
+        private const int INDEX_FIRMWARE_VER = 1;
+        private const int INDEX_ELECTRONICS = 2;
+        private const int INDEX_HEAD_NO_1 = 3;
+        private const int INDEX_HEAD_NO_2 = 4;
+        private const int INDEX_AMC_NO_1 = 5;
+        private const int INDEX_AMC_NO_2 = 6;
+        private const int INDEX_LIGHT = 7;
+        private const int INDEX_CAMERA = 8;
+        private const int INDEX_48VDC_EXT_PS = 9;
+
+        private const int INDEX_FREQUENCY_SWEEP = 0;
+        private const int INDEX_MAXIMUM_SPL = 1;
+        private const int INDEX_MAXIMUM_OUTPUT_NOISE_LEVEL = 6;
+
+        public ModelLradRx950Nxt(List<string> data) : base(data)
+        {
+            general.Add(new Field(INDEX_REMARKS, data[COL_REMARKS]));
+
+            serialNo.Add(new Field(INDEX_FIRMWARE_VER, data[COL_FIRMWARE_VER]));
+            serialNo.Add(new Field(INDEX_ELECTRONICS, data[COL_ELEC_SN]));
+            serialNo.Add(new Field(INDEX_HEAD_NO_1, data[COL_HEAD_NO_1_SN]));
+            serialNo.Add(new Field(INDEX_HEAD_NO_2, data[COL_HEAD_NO_2_SN]));
+            serialNo.Add(new Field(INDEX_AMC_NO_1, data[COL_AMC_NO_1_SN]));
+            serialNo.Add(new Field(INDEX_AMC_NO_2, data[COL_AMC_NO_2_SN]));
+            serialNo.Add(new Field(INDEX_LIGHT, data[COL_LIGHT_SN]));
+            serialNo.Add(new Field(INDEX_CAMERA, data[COL_CAMERA_SN]));
+            serialNo.Add(new Field(INDEX_48VDC_EXT_PS, data[COL_48VDC_SUPPLY_SN]));
+
+            driverSns.Add(new Field(INDEX_DRIVER_SN_1, data[COL_DRIVER1_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_2, data[COL_DRIVER2_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_3, data[COL_DRIVER3_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_4, data[COL_DRIVER4_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_5, data[COL_DRIVER5_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_6, data[COL_DRIVER6_SN]));
+            driverSns.Add(new Field(INDEX_DRIVER_SN_7, data[COL_DRIVER7_SN]));
+
+            subTests.Add(new Field(INDEX_FREQUENCY_SWEEP, data[COL_FREQ_SWEEP]));
+            subTests.Add(new Field(INDEX_MAXIMUM_SPL, data[COL_MAXSPL]));
+            subTests.Add(new Field(INDEX_MAXIMUM_OUTPUT_NOISE_LEVEL, data[COL_OUTPUT_NOISE]));
         }
     }
 

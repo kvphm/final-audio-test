@@ -8057,7 +8057,7 @@ namespace Final_Audio_Test
         /// <returns></returns>
         private string GetPathFromProductModelStr()
         {
-            const string PREFIX = "Z:\\Kevin Pham\\"; // Prefix would be Folder.networkDrive later
+            const string PREFIX = "Z:\\Kevin Pham\\Test Logs\\"; // Prefix would be Folder.networkDrive later
             string infix;
             const string SUFFIX = " Test Log (Post-Test).csv";
             switch (DUT.productModel)
@@ -8265,10 +8265,16 @@ namespace Final_Audio_Test
                     model = new ModelSsxWoTrans(latestTest);
                     break;
                 case "500RX":
+                    model = new ModelLradRx500Rx(latestTest);
+                    break;
                 case "950RXL":
+                    model = new ModelLradRx950Rxl(latestTest);
+                    break;
                 case "1000RX":
+                    model = new ModelLradRx1000Rx(latestTest);
+                    break;
                 case "950NXT":
-                    model = new ModelLradRx(latestTest);
+                    model = new ModelLradRx950Nxt(latestTest);
                     break;
                 case "2000X":
                     model = new Model2000X(latestTest);
